@@ -33,9 +33,23 @@ Let's link to useful tools for data science:
 
 Here's my dog, Tori:
 
-![](images/Tori.jpeg)
+<img src = "images/Tori.jpeg" style  = "width:75%">
+
 
 [About me](about.html)
 
+## Quarterly Results {.tabset}
+
+### By Product
+
+This is my first tab and I can do stuff
+
+### By Region
+
+This is my second tab and it does other stuff
+
+# This is also a new section
+
+and it's really great
 
 
