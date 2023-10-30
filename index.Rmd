@@ -21,12 +21,6 @@ And here's some addition text ...
 rnorm(10)
 ```
 
-## Links to other websites
-
-Let's link to useful tools for data science:
-
-* [Google](https://www.google.com/)
-* [P8105](https://p8105.com)
 
 
 ## Local image

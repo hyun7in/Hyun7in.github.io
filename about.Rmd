@@ -9,3 +9,11 @@ output:
 # This page has information about me
 
 I am MS Biostat student.
+
+## Links to other websites
+
+Let's link to useful tools for data science:
+
+* [Resume](resume.html)
+* [Github](https://github.com/hyun7in)
+* [Linkedin](https://www.linkedin.com/in/hyun7in/)

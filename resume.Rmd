@@ -1,0 +1,102 @@
+---
+title: "Resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Hyun Jin Jung
+
+
+### Education
+ 
+**Columbia University, Mailman School of Public Health, New York, NY  Expected May 2025**
+
+*MS Biostatistics - Clinical Research Methods track*
+
+**MCPHS University Boston, MA	May 2022**
+
+*PharmD Graduate*
+
+### Licenses and Certifications
+
+*Massachusetts Intern Pharmacist License: PI165616	Expires Feb 2024*
+
+*California Intern Pharmacist License: INT 49757	Expires Aug 2024*
+
+*APhA Pharmacy-Based Immunization Delivery certified by American Pharmacist Association*
+
+### Work Experience
+
+- Woodbridge Pharmacy, Irvine, CA	Oct 2022 – Mar 2023
+
+- Biology Lab Assistant at MCPHS University	Jan 2018 - April 2019
+
+### Advanced Pharmacy Practice Experience
+
+- Beth Israel Deaconess Medical Center, Boston, MA	Mar 2022 – May 2022 Pharmacy Intern
+
+- Codman Square Health Center, Dorchester, MA	Feb 2022 – Mar 2022 Pharmacy Intern
+
+- New England Baptist Hospital, Boston, MA	Jan 2022 – Feb 2022 Pharmacy Intern
+
+- ACC Apothecary, Newton, MA	Sept 2021 – Oct 2021 Pharmacy Intern
+
+- Dana-Farber Cancer Institute Outpatient Pharmacy, Boston, MA	Aug 2021 – Sept 2021 Pharmacy Intern
+
+- Boston Health Care for the Homeless Program, Boston, MA	June 2021- Aug 2021 Pharmacy Intern
+
+### Introductory Pharmacy Practice Experience
+
+- Carney Hospital, Dorchester, MA	May 2021 - May 2021 Pharmacy Intern
+
+- Walgreens, Boston, MA	Jun 2019 – Jul 2019 Pharmacy Intern
+
+### Publication
+*Hyun Jin J., Ronny P. (2021) Tachykinin NK2 antagonist for treatments of various disease states. Autonomic Neuroscience: Basic and Clinical, 235, 102865*
+
+*Hyun Jin J., Ronny P. (2022) Non-Invasive Breath Analysis for Disease Screening and Diagnoses. Biosensor, 12(4):235. https://doi.org/10.3390/bios12040235*
+
+### Poster Presentation
+*Hyun Jin Jung. Tachykinin NK2 antagonist for treatments of various disease states. Poster presented at: 2021 Undergraduate Research Conference at MCPHS University, Boston, MA*
+
+### Leadership Experience
+**Korean-American Society in Biotech and Pharmaceuticals (KASBP)**
+*YG Director	Sept 2021 - Present*
+
+-	Organized a mentor-mentee program for young professionals in biotech and pharmaceuticals area.
+-	Oversee guidance and ensuring that mentors and mentees are paired with their best interests and needs.
+-	Follow-up with participants to ensure that mentoring program is meeting its objectives and communicate with all participants for feedback.
+-	Organized a PharmD career pathway seminar in spring 2022 for PharmD candidates and graduates.
+-	Organized a YG program such as CV clinic career development workshop in symposiums
+
+**Korean-American Scientists and Engineers Associations (KSEA)**
+*Membership Director	Apr 2018 - Feb 2019*
+
+-	Managed membership applications at the KSEA Headquarter.
+-	Provided support and advice to students regarding their academic performances by offering guidance in the mentor-mentee program.
+-	Organized school events and keynote series every other week.
+-	Adhered to organizational policies when requesting expense reimbursement and ensured all expenditures are in the best interest of.
+-	Built and maintained relationships with students in our school and other Boston chapter KSEA members.
+
+*Greater Boston Symposium Organizer (Publicity Committee)	Nov 2018 – Feb 2019*
+
+-	Sent out invitation emails and follow-up emails to members of organization to symposium.
+-	Organized and managed a symposium with 96 participants.
+-	Made social media posts, stories, highlight covers, event flyers, event banners, and posters.
+-	Managed multiple KSEA social media accounts.
+
+### Skills
+-	EnterpriseRX
+-	DigitalRx
+-	Epic Systems
+-	Meditech software
+-	Pyxis
+-	Non-Sterile Compounding
+-	Time management
+-	Excellent problem solving
+-	Computer knowledgeable	(Word, Excel, PowerPoint, Outlook, etc.)
+- R
+
+
