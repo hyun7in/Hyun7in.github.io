@@ -6,14 +6,33 @@ output:
     toc_float: true
 ---
 
-# This page has information about me
+## This page is all about me and the things I love!
 
-I am MS Biostat student.
+### Check out my dog, my hobbies, and more.
 
-## Links to other websites
+I am from Seoul, South Korea. This is the view from my apartment.
 
-Let's link to useful tools for data science:
+Double rainbow :)
 
-* [Resume](resume.html)
-* [Github](https://github.com/hyun7in)
-* [Linkedin](https://www.linkedin.com/in/hyun7in/)
+<img src="images/home.jpg" style="width:75%"/>
+
+Here's my dog, Tori. She's 13.
+
+<img src="images/Tori.jpeg" style="width:75%"/> 
+<img src="images/Tori2.jpg" style="width:75%"/>
+
+I love cooking and baking.
+
+<img src="images/cooking.jpg" style="width:75%"/> 
+<img src="images/cooking2.jpg" style="width:75%;"/> 
+<img src="images/baking.jpg" style="width:75%"/>
+
+I also love gaming and ended up making a Youtube channel. :p
+
+<img src="images/youtube.jpg" style="width:75%"/>
+
+## Below are links to other websites!
+
+-   [Resume](resume.html)
+-   [Github](https://github.com/hyun7in)
+-   [Linkedin](https://www.linkedin.com/in/hyun7in/)

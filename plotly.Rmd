@@ -1,8 +1,8 @@
 ---
 title: "Plotly"
 author: "Hyun Jin Jung"
-date: "2023-10-24"
-output: github_document
+date: "2023-10-30"
+output: html_document
 ---
 
 ```{r, include = FALSE}
@@ -12,71 +12,32 @@ library(plotly)
 library(p8105.datasets)
 ```
 
-Focus on NYC Airbnb data
-
+I will be using `Instacart` dataset to make plots.
 ```{r}
-data("nyc_airbnb")
+data("instacart")
 
-nyc_airbnb = nyc_airbnb |>
-  mutate(stars = review_scores_location / 2) |>
-  select(borough = neighbourhood_group,
-         neighbourhood, stars, price, room_type, lat, long) |>
-  drop_na(stars) |>
-  filter(
-    borough == "Manhattan",
-    room_type == "Entire home/apt",,
-    price %in% 100:500
-  )
+instacart_aisle = instacart |>
+  group_by(aisle) |>
+  summarize(n_orders = n()) |>
+  arrange(desc(n_orders))
 ```
+The aisle with the most items ordered is "`r instacart_aisle$aisle[1]`" with `r instacart_aisle$n_orders[1]` items.
 
-
-Let's make a scatterplot!
-
+Since most items were ordered from the `Fresh vegetables` aisle, I filtered the data to focus on this category.
 ```{r}
-nyc_airbnb |>
-  mutate(text_label = str_c("Price: $", price, "\nRating:", stars)) |>
-  plot_ly(
-    x = ~lat, y = ~long, color = ~ price, text = ~text_label,
-    type = "scatter", mode = "markers"
-  )
+veges = instacart |>
+  filter(instacart$aisle == "fresh vegetables")  |>
+  group_by(product_name) |>
+  mutate(number_of_orders = n()) |>
+  select(user_id, order_dow, order_hour_of_day, days_since_prior_order, product_name, number_of_orders)
 ```
+We’ll use this dataset as the basis for our plots.
 
-Let's make a box plot!
-
+Plotly scatterplot
 ```{r}
-nyc_airbnb |>
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |>
-  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
+veges |>
+  filter(number_of_orders > 1000) |>
+  plot_ly(x = ~product_name, y = ~number_of_orders, type = "scatter", mode = "markers",
+    color = ~days_since_prior_order, alpha = 0.5)
 ```
-
-Let's make a bar plot!
-
-```{r}
-nyc_airbnb |>
-  count(neighbourhood) |>
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |>
-  plot_ly(
-    x = ~neighbourhood, y = ~n, color = ~neighbourhood,
-    type = "bar", colors = "viridis")
-```
-
-# ggplotly 
-
-ggplot scatterplot
-
-```{r}
-ggp_scatter = 
-  nyc_airbnb |>
-  ggplot(aes(x = lat, y = long, color = price)) +
-  geom_point(alpha = .5)
-
-ggplotly(ggp_scatter)
-```
-
-
-
-
-
-
-
 
