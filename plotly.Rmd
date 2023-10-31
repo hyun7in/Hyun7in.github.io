@@ -28,7 +28,9 @@ Let's make a box plot!
 tidy_rest_inspec |>
   filter(grade == "C") |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
-  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis")
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis") |>
+  layout(yaxis = list(title = "Score"),
+         xaxis = list(title = "Cuisine Description"))
 ```
 
 
@@ -49,7 +51,8 @@ tidy_rest_inspec |>
   mutate(text_label = str_c("Grade:", grade, "/nCritical Flag:", critical_flag)) |>
   plot_ly(
     x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers",
-    color = ~boro, text = ~text_label, alpha = 0.5
-  )
+    color = ~boro, text = ~text_label, alpha = 0.5) |>
+    layout(yaxis = list(title = "Score"),
+         xaxis = list(title = "Cuisine Description"))
 ```
 
