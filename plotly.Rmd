@@ -32,7 +32,7 @@ tidy_rest_inspec |>
 ```
 
 
-Let's make a box plot!
+Let's make a bar plot!
 ```{r}
 tidy_rest_inspec |>
   group_by(boro, grade) |>
