@@ -27,32 +27,37 @@ tidy_rest_inspec = rest_inspec |>
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Distribution of Scores for Grade "C" Restaurants by Cuisine Description and Borough
 
 ```{r}
 tidy_rest_inspec |>
+  filter(grade == "C") |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
-  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis")
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis") |>
+  layout(yaxis = list(title = "Score"),
+         xaxis = list(title = "Cuisine Description"))
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Relationship Between Cuisine Descriptions, Scores, and Boroughs
 
 ```{r}
 tidy_rest_inspec |>
-  mutate(text_label = str_c("Grade:", grade, "/nCritical Flag:", critical_flag)) |>
+  mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers",
-    color = ~boro, text = ~text_label, alpha = 0.5
-  )
+    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
+    color = ~boro, text = ~text_label, alpha = 0.5) |>
+    layout(yaxis = list(title = "Score"),
+         xaxis = list(title = "Cuisine Description"))
 ```
 
-### Chart C
+### Unique Restaurant Counts by Borough and Grade
 
 ```{r}
 tidy_rest_inspec |>
+  distinct(boro, dba, grade) |>
   group_by(boro, grade) |>
   count(grade) |>
   mutate(grade, fct_reorder(grade, n)) |>

@@ -32,11 +32,12 @@ tidy_rest_inspec |>
   layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description"))
 ```
-
+We filtered the data to focus on restaurants with a "C" grade. Then, we used the `cuisine_description` variable to create a box plot, where each `cuisine_description` is shown on the x-axis and `score` on the y-axis. The data points are colored by `boro`. This visualization provides insights into the distribution of scores for restaurants with a "C" grade based on their `cuisine_descriptions`.
 
 Let's make a bar plot!
 ```{r}
 tidy_rest_inspec |>
+  distinct(boro, dba, grade) |>
   group_by(boro, grade) |>
   count(grade) |>
   mutate(grade, fct_reorder(grade, n)) |>
@@ -44,15 +45,16 @@ tidy_rest_inspec |>
   layout(yaxis = list(title = "Count of Restaurants"),
          xaxis = list(title = "Grade"))
 ```
+There is multiple data for the same restaurant. We grouped the data by borough and grade, counted the unique restaurants within each category, and visualized the results in a bar plot.
 
 Let's make a scatter plot!
 ```{r}
 tidy_rest_inspec |>
-  mutate(text_label = str_c("Grade:", grade, "/nCritical Flag:", critical_flag)) |>
+  mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers",
+    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
     color = ~boro, text = ~text_label, alpha = 0.5) |>
     layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description"))
 ```
-
+We added a text label for each data point, containing the `Grade` and `Critical Flag` information. Then, we created a scatter plot, with `cuisine_descriptions` on the x-axis and `scores` on the y-axis. The data points are colored by `boro`, and we included the text labels for additional context. This scatter plot visualizes the relationships between `cuisine_descriptions`, `scores`, and `boro`, helping us identify patterns and trends.
