@@ -8,36 +8,48 @@ output: html_document
 ```{r, include = FALSE}
 library(tidyverse)
 library(plotly)
-
 library(p8105.datasets)
+
+data("rest_inspec")
 ```
 
-I will be using `Instacart` dataset to make plots.
-```{r}
-data("instacart")
+We will be using `NYC Restaurant Inspections` dataset to make plots.
 
-instacart_aisle = instacart |>
-  group_by(aisle) |>
-  summarize(n_orders = n()) |>
-  arrange(desc(n_orders))
+```{r}
+tidy_rest_inspec = rest_inspec |>
+  filter(grade %in% c("A", "B", "C"), boro != "Missing") |>
+  mutate(boro = str_to_title(boro),
+         dba = str_to_upper(dba)) |>
+  select(boro, critical_flag, cuisine_description, dba, score, violation_code, zipcode, grade)
 ```
-The aisle with the most items ordered is "`r instacart_aisle$aisle[1]`" with `r instacart_aisle$n_orders[1]` items.
 
-Since most items were ordered from the `Fresh vegetables` aisle, I filtered the data to focus on this category.
+Let's make a box plot!
 ```{r}
-veges = instacart |>
-  filter(instacart$aisle == "fresh vegetables")  |>
-  group_by(product_name) |>
-  mutate(number_of_orders = n()) |>
-  select(user_id, order_dow, order_hour_of_day, days_since_prior_order, product_name, number_of_orders)
+tidy_rest_inspec |>
+  filter(grade == "C") |>
+  mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis")
 ```
-We’ll use this dataset as the basis for our plots.
 
-Plotly scatterplot
+
+Let's make a box plot!
 ```{r}
-veges |>
-  filter(number_of_orders > 1000) |>
-  plot_ly(x = ~product_name, y = ~number_of_orders, type = "scatter", mode = "markers",
-    color = ~days_since_prior_order, alpha = 0.5)
+tidy_rest_inspec |>
+  group_by(boro, grade) |>
+  count(grade) |>
+  mutate(grade, fct_reorder(grade, n)) |>
+  plot_ly(x = ~grade, y = ~n, color = ~boro, type = "bar", colors = "viridis") |>
+  layout(yaxis = list(title = "Count of Restaurants"),
+         xaxis = list(title = "Grade"))
+```
+
+Let's make a scatter plot!
+```{r}
+tidy_rest_inspec |>
+  mutate(text_label = str_c("Grade:", grade, "/nCritical Flag:", critical_flag)) |>
+  plot_ly(
+    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers",
+    color = ~boro, text = ~text_label, alpha = 0.5
+  )
 ```
 
