@@ -12,27 +12,9 @@ Hello! I am Hyun Jin, a first-year master's student in Biostatistics at Columbia
 ![](https://media.giphy.com/media/Wj7lNjMNDxSmc/giphy.gif)
 
 
-## Here's a subsection
-
-And here's some addition text ...
-
-
 ## Want to learn more about me? Click 'About me' below.
 [About me](about.html)
 
-## Quarterly Results {.tabset}
-
-### By Product
-
-This is my first tab and I can do stuff
-
-### By Region
-
-This is my second tab and it does other stuff
-
-# This is also a new section
-
-and it's really great
 
 # Other stuff on this page
 
