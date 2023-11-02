@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "NYC Restaurant Inspection"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -38,8 +38,6 @@ tidy_rest_inspec |>
          xaxis = list(title = "Cuisine Description"))
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
 
 ### Relationship Between Cuisine Descriptions, Scores, and Boroughs
 
@@ -48,11 +46,13 @@ tidy_rest_inspec |>
   mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
     x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
-    color = ~boro, text = ~text_label, alpha = 0.5) |>
+    color = ~boro, text = ~text_label, alpha = 0.05) |>
     layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description"))
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 ### Unique Restaurant Counts by Borough and Grade
 
 ```{r}
