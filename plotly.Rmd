@@ -20,8 +20,14 @@ tidy_rest_inspec = rest_inspec |>
   filter(grade %in% c("A", "B", "C"), boro != "Missing") |>
   mutate(boro = str_to_title(boro),
          dba = str_to_upper(dba)) |>
+  mutate(cuisine_description = recode(
+    cuisine_description,
+    "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" = "Latin",
+    "Bottled beverages, including water, sodas, juices, etc." = "Bottled Beverages"
+  )) |>
   select(boro, critical_flag, cuisine_description, dba, score, violation_code, zipcode, grade)
 ```
+Renamed "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" to "Latin" and "Bottled beverages, including water, sodas, juices, etc." to "Bottled Beverages", to improve plot aesthetics and space utilization.
 
 Let's make a box plot!
 ```{r}
