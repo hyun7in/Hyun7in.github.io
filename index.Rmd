@@ -13,9 +13,11 @@ Hello! I am Hyun Jin, a first-year master's student in Biostatistics at Columbia
 
 
 ## Want to learn more about me? Click 'About me' below.
+
 [About me](about.html)
 
 
-# Other stuff on this page
+# Other content on this page
 
-Definitely there is [plotly](plotly.html) stuff!
+There is [plotly](plotly.html), and if you want to look at the plots only, click this [dashboard](dashboard.html).
+

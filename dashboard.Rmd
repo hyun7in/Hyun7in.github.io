@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    theme: flatly
 ---
 
 ```{r setup, include=FALSE}
@@ -40,7 +41,8 @@ tidy_rest_inspec |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
   plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis") |>
   layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description"))
+         xaxis = list(title = "Cuisine Description",
+                      tickfont = list(size = 8)))
 ```
 
 
@@ -53,7 +55,8 @@ tidy_rest_inspec |>
     x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
     color = ~boro, text = ~text_label, alpha = 0.05) |>
     layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description"))
+         xaxis = list(title = "Cuisine Description",
+                      tickfont = list(size = 8)))
 ```
 
 Column {data-width=350}
