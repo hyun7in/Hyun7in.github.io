@@ -34,7 +34,8 @@ Renamed "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" to "L
 tidy_rest_inspec |>
   filter(grade == "C") |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
-  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", colors = "viridis") |>
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", 
+          width = 800, height = 400, colors = "viridis") |>
   layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description",
                       tickfont = list(size = 8)))
@@ -46,7 +47,8 @@ We filtered the data to focus on restaurants with a "C" grade. Then, we used the
 tidy_rest_inspec |>
   mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
+    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", 
+    colors = "viridis", width = 800, height = 400,
     color = ~boro, text = ~text_label, alpha = 0.05) |>
     layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description",

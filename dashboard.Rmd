@@ -53,7 +53,8 @@ tidy_rest_inspec |>
 tidy_rest_inspec |>
   mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", colors = "viridis",
+    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", 
+    colors = "viridis", width = 800, height = 400,
     color = ~boro, text = ~text_label, alpha = 0.05) |>
     layout(yaxis = list(title = "Score"),
          xaxis = list(title = "Cuisine Description",
