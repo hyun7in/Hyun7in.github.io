@@ -47,7 +47,7 @@ tidy_rest_inspec |>
 ```
 
 
-### Relationship Between Cuisine Descriptions, Scores, and Boroughs
+### Distribution of Scores by Cuisine Descriptions and Boroughs 
 
 ```{r}
 tidy_rest_inspec |>

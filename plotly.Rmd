@@ -42,7 +42,7 @@ tidy_rest_inspec |>
 ```
 We filtered the data to focus on restaurants with a "C" grade. Then, we used the `cuisine_description` variable to create a box plot, where each `cuisine_description` is shown on the x-axis and `score` on the y-axis. The data points are colored by `boro`. This visualization provides insights into the distribution of scores for restaurants with a "C" grade based on their `cuisine_descriptions`.
 
-### Relationship Between Cuisine Descriptions, Scores, and Boroughs
+### Distribution of Scores by Cuisine Descriptions and Boroughs 
 ```{r}
 tidy_rest_inspec |>
   mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
