@@ -23,11 +23,12 @@ tidy_rest_inspec = rest_inspec |>
   mutate(cuisine_description = recode(
     cuisine_description,
     "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" = "Latin",
-    "Bottled beverages, including water, sodas, juices, etc." = "Bottled Beverages"
+    "Bottled beverages, including water, sodas, juices, etc." = "Bottled Beverages",
+    "CafÃ©/Coffee/Tea" = "Coffee/Tea"
   )) |>
   select(boro, critical_flag, cuisine_description, dba, score, violation_code, zipcode, grade)
 ```
-Renamed "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" to "Latin" and "Bottled beverages, including water, sodas, juices, etc." to "Bottled Beverages", to improve plot aesthetics and space utilization.
+Renamed "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" to "Latin" and "Bottled beverages, including water, sodas, juices, etc." to "Bottled Beverages", and "CafÃ©/Coffee/Tea" to "Coffee/Tea", to improve plot aesthetics and space utilization.
 
 ### Distribution of Scores for Grade "C" Restaurants by Cuisine Description and Borough
 ```{r}
