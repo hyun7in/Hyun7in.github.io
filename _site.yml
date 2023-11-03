@@ -2,7 +2,7 @@ name: "Hyun Jin Jung"
 output_dir: "."
 navbar:
   title: "Home"
-  right:
+  left:
     - text: "About"
       href: about.html
     - text: "Resume"
@@ -11,12 +11,13 @@ navbar:
       href: plotly.html
     - text: "Dashboard"
       href: dashboard.html
+  right:
     - icon: fa-envelope fa-lg
       href: mailto:<hj2660@cumc.columbia.edu>
-    - icon: fa-github fa-lg
-      href: https://github.com/hyun7in
     - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/hyun7in/
+    - icon: fa-github fa-lg
+      href: https://github.com/hyun7in
 output:
   html_document:
     theme: flatly
