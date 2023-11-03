@@ -42,19 +42,30 @@ tidy_rest_inspec |>
 ```
 We filtered the data to focus on restaurants with a "C" grade. Then, we used the `cuisine_description` variable to create a box plot, where each `cuisine_description` is shown on the x-axis and `score` on the y-axis. The data points are colored by `boro`. This visualization provides insights into the distribution of scores for restaurants with a "C" grade based on their `cuisine_descriptions`.
 
-### Distribution of Scores by Cuisine Descriptions and Boroughs 
+### Restaurant Scores for Top 10 Cuisine Descriptions and Boroughs 
 ```{r}
-tidy_rest_inspec |>
-  mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
+top_cuisines = tidy_rest_inspec |>
+  group_by(cuisine_description) |>
+  summarise(count = n_distinct(dba)) |>
+  arrange(desc(count)) |>
+  head(10)
+
+# Filter `tidy_rest_inspec` to include only the top 10 cuisine descriptions
+filtered_data = tidy_rest_inspec |>
+  filter(cuisine_description %in% top_cuisines$cuisine_description)
+
+# Create a scatter plot with color differentiation by borough
+filtered_data |>
+  mutate(text_label = str_c("Restaurant:", dba, "\nGrade:", grade, "\nCritical Flag:", critical_flag)) |>
   plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", 
-    colors = "viridis", width = 800, height = 400,
-    color = ~boro, text = ~text_label, alpha = 0.05) |>
-    layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description",
-                      tickfont = list(size = 8)))
+    x = ~cuisine_description, y = ~score, type = "scatter", mode = "markers", 
+    color = ~boro, text = ~text_label, alpha = 0.5, colors = "viridis", opacity = 0.8) |>
+  layout(
+    xaxis = list(title = "Cuisine Description"),
+    yaxis = list(title = "Score")
+  )
 ```
-We added a text label for each data point, containing the `Grade` and `Critical Flag` information. Then, we created a scatter plot, with `cuisine_descriptions` on the x-axis and `scores` on the y-axis. The data points are colored by `boro`, and we included the text labels for additional context. This scatter plot visualizes the relationships between `cuisine_descriptions`, `scores`, and `boro`, helping us identify patterns and trends.
+In this code, we first filter the original dataset `tidy_rest_inspec` to include only the rows with the top 10 cuisine descriptions. Then, we create a scatter plot where each point represents a restaurant with the x-axis indicating `cuisine_description`, the y-axis indicating the `score`, and different colors representing `boro`.
 
 ### Unique Restaurant Counts by Borough and Grade
 ```{r}

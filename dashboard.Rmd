@@ -25,7 +25,8 @@ tidy_rest_inspec = rest_inspec |>
   mutate(cuisine_description = recode(
     cuisine_description,
     "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" = "Latin",
-    "Bottled beverages, including water, sodas, juices, etc." = "Bottled Beverages"
+    "Bottled beverages, including water, sodas, juices, etc." = "Bottled Beverages",
+    "CafÃ©/Coffee/Tea" = "Coffee/Tea"
   )) |>
   select(boro, critical_flag, cuisine_description, dba, score, violation_code, zipcode, grade)
 ```
@@ -46,23 +47,34 @@ tidy_rest_inspec |>
                       tickfont = list(size = 8)))
 ```
 
-
-### Distribution of Scores by Cuisine Descriptions and Boroughs 
-
-```{r}
-tidy_rest_inspec |>
-  mutate(text_label = str_c("Grade:", grade, "\nCritical Flag:", critical_flag)) |>
-  plot_ly(
-    x = ~ cuisine_description, y = ~score, type = "scatter", mode = "markers", 
-    colors = "viridis", width = 800, height = 400,
-    color = ~boro, text = ~text_label, alpha = 0.05) |>
-    layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description",
-                      tickfont = list(size = 8)))
-```
-
 Column {data-width=350}
 -----------------------------------------------------------------------
+
+### Restaurant Scores for Top 10 Cuisine Descriptions and Boroughs 
+
+```{r}
+top_cuisines = tidy_rest_inspec |>
+  group_by(cuisine_description) |>
+  summarise(count = n_distinct(dba)) |>
+  arrange(desc(count)) |>
+  head(10)
+
+# Filter `tidy_rest_inspec` to include only the top 10 cuisine descriptions
+filtered_data = tidy_rest_inspec |>
+  filter(cuisine_description %in% top_cuisines$cuisine_description)
+
+# Create a scatter plot with color differentiation by borough
+filtered_data |>
+  mutate(text_label = str_c("Restaurant:", dba, "\nGrade:", grade, "\nCritical Flag:", critical_flag)) |>
+  plot_ly(
+    x = ~cuisine_description, y = ~score, type = "scatter", mode = "markers", 
+    color = ~boro, text = ~text_label, alpha = 0.5, colors = "viridis", opacity = 0.8) |>
+  layout(
+    xaxis = list(title = "Cuisine Description"),
+    yaxis = list(title = "Score")
+  )
+```
+
 ### Unique Restaurant Counts by Borough and Grade
 
 ```{r}
