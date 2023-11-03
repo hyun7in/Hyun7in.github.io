@@ -40,11 +40,10 @@ Column {data-width=650}
 tidy_rest_inspec |>
   filter(grade == "C") |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
-  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", 
-          width = 800, height = 400, colors = "viridis") |>
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, 
+          type = "box", colors = "viridis") |>
   layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description",
-                      tickfont = list(size = 8)))
+         xaxis = list(title = "Cuisine Description"))
 ```
 
 Column {data-width=350}

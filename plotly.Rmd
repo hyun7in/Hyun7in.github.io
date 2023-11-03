@@ -34,11 +34,10 @@ Renamed "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" to "L
 tidy_rest_inspec |>
   filter(grade == "C") |>
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) |>
-  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, type = "box", 
-          width = 800, height = 400, colors = "viridis") |>
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~boro, 
+          type = "box", colors = "viridis") |>
   layout(yaxis = list(title = "Score"),
-         xaxis = list(title = "Cuisine Description",
-                      tickfont = list(size = 8)))
+         xaxis = list(title = "Cuisine Description"))
 ```
 We filtered the data to focus on restaurants with a "C" grade. Then, we used the `cuisine_description` variable to create a box plot, where each `cuisine_description` is shown on the x-axis and `score` on the y-axis. The data points are colored by `boro`. This visualization provides insights into the distribution of scores for restaurants with a "C" grade based on their `cuisine_descriptions`.
 
